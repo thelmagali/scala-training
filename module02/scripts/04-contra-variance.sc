@@ -8,10 +8,10 @@ trait Transport[T] {
   def send(item: T): String
 }
 object AppleTransport extends Transport[Apple] {
-  def send(item: Apple) = s"Coring and eating ${item.name}"
+  def send(item: Apple) = s"Sending and eating ${item.name}"
 }
 object FruitTransport extends Transport[Fruit] {
-  def send(item: Fruit) = s"Eating a healthy ${item.name}"
+  def send(item: Fruit) = s"Sending a healthy ${item.name}"
 }
 object AnyTransport extends Transport[Any] {
   def send(item: Any) = s"Sending ${item.toString}"
