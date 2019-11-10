@@ -9,38 +9,12 @@ abstract class Cereal extends Food
 case class Granola(name: String) extends Cereal
 case class Muesli(name: String) extends Cereal
 
-val fuji = Apple("Fuji")
-val alpen = Muesli("Alpen")
-
-def eat(f: Food): String = s"${f.name} eaten"
-
-eat(fuji)
-eat(alpen)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 2. Information loss
 case class Bowl(food: Food) {
   override def toString = s"A bowl of yummy ${food.name}s"
   def contents = food
 }
-val fruitBowl = Bowl(fuji)
-val cerealBowl = Bowl(alpen)
+val fruitBowl = Bowl(Apple("Fuji"))
+val cerealBowl = Bowl(Muesli("Alpen"))
 
 fruitBowl.contents
 cerealBowl.contents
@@ -57,18 +31,13 @@ cerealBowl.contents
 
 
 
-
-
-
-
-
-//3. Generic types
+// Generic types
 case class Bowl2[F](contents: F) {
   override def toString: String = s"A yummy bowl of ${contents}s"
 }
 
-val appleBowl = Bowl2(fuji)
-val muesliBowl = Bowl2(alpen)
+val appleBowl = Bowl2(Apple("Fuji"))
+val muesliBowl = Bowl2(Bowl2(Muesli("Alpen")))
 appleBowl.contents
 muesliBowl.contents
 
