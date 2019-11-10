@@ -15,22 +15,12 @@ case class FoodBowl[F <: Food](contents: F) {
   override def toString: String = s"A yummy bowl of ${contents.name}s"
 }
 
-// invariance
-
-def serveToFruitEater(fruitBowl: FoodBowl[Fruit]) =
-  s"mmmm, those ${fruitBowl.contents.name}s were very good"
-
-val fruitBowl = FoodBowl[Fruit](fuji)
-val cerealBowl = FoodBowl[Cereal](alpen)
-
-serveToFruitEater(fruitBowl)
-
-// serveToFruitEater(cerealBowl)
+// 1. invariance
 
 def serveToFoodEater(foodBowl: FoodBowl[Food]) =
   s"mmmm, I really liked that ${foodBowl.contents.name}"
 
-// serveToFoodEater(fruitBowl)
+//serveToFoodEater(fruitBowl)
 
 val foodBowl1 = FoodBowl[Food](fuji)
 val foodBowl2 = FoodBowl[Food](alpen)
@@ -40,23 +30,27 @@ serveToFoodEater(foodBowl2)
 
 // serveToFoodEater(cerealBowl)
 
-// covariance
 
+
+
+
+
+
+
+
+
+
+
+
+
+// covariance
 case class FoodBowl2[+F <: Food](contents: F) {
   override def toString: String = s"A yummy bowl of ${contents.name}s"
 }
 // note the +F
 
-def serveToFoodEater(foodBowl: FoodBowl2[Food]) =
+def serveToFoodEater2(foodBowl: FoodBowl2[Food]) =
   s"mmmm, I really liked that ${foodBowl.contents.name}"
 
-serveToFoodEater(FoodBowl2[Fruit](fuji))
-serveToFoodEater(FoodBowl2(alpen))
-
-def serveToFruitEater(foodBowl: FoodBowl2[Fruit]) =
-  s"Nice fruity ${foodBowl.contents.name}"
-serveToFruitEater(FoodBowl2[Fruit](fuji))
-serveToFruitEater(FoodBowl2(fuji))
-
-// serveToFruitEater(FoodBowl2(alpen))
-// serveToFruitEater(FoodBowl2[Food](fuji))
+serveToFoodEater2(FoodBowl2[Fruit](fuji))
+serveToFoodEater2(FoodBowl2(alpen))

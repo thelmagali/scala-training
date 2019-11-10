@@ -3,54 +3,46 @@ trait Food {
   override def toString = s"Yummy $name"
 }
 trait Fruit extends Food
-case class Apple(val name: String) extends Fruit
-case class Orange(val name: String) extends Fruit
-trait Sink[T] {
+case class Apple(name: String) extends Fruit
+trait Transport[T] {
   def send(item: T): String
 }
-object AppleSink extends Sink[Apple] {
+object AppleTransport extends Transport[Apple] {
   def send(item: Apple) = s"Coring and eating ${item.name}"
 }
-object OrangeSink extends Sink[Orange] {
-  def send(item: Orange) = s"Juicing and drinking ${item.name}"
-}
-object FruitSink extends Sink[Fruit] {
+object FruitTransport extends Transport[Fruit] {
   def send(item: Fruit) = s"Eating a healthy ${item.name}"
 }
-object AnySink extends Sink[Any] {
+object AnyTransport extends Transport[Any] {
   def send(item: Any) = s"Sending ${item.toString}"
 }
 
-def sinkAnApple(sink: Sink[Apple]): String = {
-  sink.send(Apple("Fuji"))
+def TransportAnApple(Transport: Transport[Apple]): String = {
+  Transport.send(Apple("Fuji"))
 }
-sinkAnApple(AppleSink)
+TransportAnApple(AppleTransport)
 
-//sinkAnApple(OrangeSink)  // this shouldn't work
 
-//sinkAnApple(FruitSink)   // but it would be nice if this did
+//TransportAnApple(FruitTransport)   // it would be nice if it worked
 
-trait Sink2[-T] {
+trait Transport2[-T] {
   def send(item: T): String
 }
 // Note the [-T]
-object AppleSink2 extends Sink2[Apple] {
-  def send(item: Apple) = s"Coring and eating ${item.name}"
+object AppleTransport2 extends Transport2[Apple] {
+  def send(item: Apple) = s"Sending and eating ${item.name}"
 }
-object OrangeSink2 extends Sink2[Orange] {
-  def send(item: Orange) = s"Juicing and drinking ${item.name}"
+object FruitTransport2 extends Transport2[Fruit] {
+  def send(item: Fruit) = s"Sending a healthy ${item.name}"
 }
-object FruitSink2 extends Sink2[Fruit] {
-  def send(item: Fruit) = s"Eating a healthy ${item.name}"
-}
-object AnySink2 extends Sink2[Any] {
+object AnyTransport2 extends Transport2[Any] {
   def send(item: Any) = s"Sending ${item.toString}"
 }
 
-def sinkAnApple(sink: Sink2[Apple]): String = {
-  sink.send(Apple("Fuji"))
+def TransportAnApple(Transport: Transport2[Apple]): String = {
+  Transport.send(Apple("Fuji"))
 }
 
-sinkAnApple(AppleSink2)
-sinkAnApple(FruitSink2)
-sinkAnApple(AnySink2)
+TransportAnApple(AppleTransport2)
+TransportAnApple(FruitTransport2)
+TransportAnApple(AnyTransport2)
