@@ -18,7 +18,8 @@ abstract class Animal {
   override def toString: String = s"Animal - $name"
 }
 case class Dog(name: String) extends Animal
-val dogBowl = Bowl(Dog("Dottie"))  // noooo - don't eat my dog
+val dottie = Dog("Dottie")
+val dogBowl = Bowl(dottie)  // noooo - don't eat my dog
 
 case class FoodBowl[F <: Food](contents: F) {
   override def toString: String = s"A yummy bowl of ${contents.name}s"

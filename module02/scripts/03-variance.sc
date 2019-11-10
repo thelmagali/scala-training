@@ -19,7 +19,6 @@ case class FoodBowl[F <: Food](contents: F) {
 def serveToFoodEater(foodBowl: FoodBowl[Food]) =
   s"mmmm, I really liked that ${foodBowl.contents.name}"
 
-//serveToFoodEater(fruitBowl)
 
 val foodBowl1 = FoodBowl[Food](fujiApple)
 val foodBowl2 = FoodBowl[Food](kellogsGranola)
