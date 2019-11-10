@@ -25,9 +25,6 @@ libraryDependencies in ThisBuild ++= Seq(
 
 )
 
-lazy val module01 = project
 lazy val module02 = project
 lazy val module03 = project
 lazy val module04 = project
-lazy val module05 = project
-lazy val module06 = project
