@@ -1,7 +1,9 @@
 //1. Simple types
-abstract class Food { val name: String }
+abstract class Food { val name: String}
 
-abstract class Fruit extends Food
+abstract class Fruit extends Food{
+  val peel = s"Peeling a $name fruit"
+}
 case class Banana(name: String) extends Fruit
 case class Apple(name: String) extends Fruit
 
@@ -38,7 +40,7 @@ case class Bowl2[F](contents: F) {
 
 val appleBowl = Bowl2(Apple("Fuji"))
 val muesliBowl = Bowl2(Bowl2(Muesli("Alpen")))
-appleBowl.contents
+appleBowl.contents.peel
 muesliBowl.contents
 
 // but this won't work
