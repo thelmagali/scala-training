@@ -43,7 +43,6 @@ val muesliBowl = Bowl2(Bowl2(Muesli("Alpen")))
 appleBowl.contents.peel
 muesliBowl.contents
 
-// but this won't work
-//case class Bowl3[F](contents: F) {
-//  override def toString: String = s"A yummy bowl of ${contents.name}s"
-//}
+
+// Show this later for Type Members
+//val foodInBowl: appleBowl.F = Apple

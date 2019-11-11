@@ -1,3 +1,5 @@
+//First go to 01-generics and uncomment the last line
+
 trait Food { val name: String }
 trait Fruit extends Food
 trait Cereal extends Food
@@ -25,4 +27,6 @@ val apple2: Apple = appleBowl.food
 val apple3: appleBowl.FOOD = appleBowl.food
 
 val apple4: AppleBowl#FOOD = appleBowl.food
+
+
 
