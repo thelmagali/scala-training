@@ -4,9 +4,15 @@ trait Food {
 }
 trait Fruit extends Food
 case class Apple(name: String) extends Fruit
+case class Orange(name: String) extends Fruit
+
+
+
 trait Transport[T] {
   def send(item: T): String
 }
+
+
 object AppleTransport extends Transport[Apple] {
   def send(item: Apple) = s"Sending and eating ${item.name}"
 }
@@ -17,13 +23,13 @@ object AnyTransport extends Transport[Any] {
   def send(item: Any) = s"Sending ${item.toString}"
 }
 
-def TransportAnApple(Transport: Transport[Apple]): String = {
-  Transport.send(Apple("Fuji"))
+def transportAnApple(transport: Transport[Apple]): String = {
+  transport.send(Apple("Fuji"))
 }
-TransportAnApple(AppleTransport)
+transportAnApple(AppleTransport)
 
 
-//TransportAnApple(FruitTransport)   // it would be nice if it worked
+//transportAnApple(FruitTransport)   // it would be nice if it worked
 
 trait Transport2[-T] {
   def send(item: T): String
@@ -39,10 +45,10 @@ object AnyTransport2 extends Transport2[Any] {
   def send(item: Any) = s"Sending ${item.toString}"
 }
 
-def TransportAnApple(Transport: Transport2[Apple]): String = {
-  Transport.send(Apple("Fuji"))
+def transportAnApple(transport: Transport2[Apple]): String = {
+  transport.send(Apple("Fuji"))
 }
 
-TransportAnApple(AppleTransport2)
-TransportAnApple(FruitTransport2)
-TransportAnApple(AnyTransport2)
+transportAnApple(AppleTransport2)
+transportAnApple(FruitTransport2)
+transportAnApple(AnyTransport2)
