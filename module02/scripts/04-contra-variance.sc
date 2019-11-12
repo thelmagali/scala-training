@@ -30,30 +30,3 @@ transportAnApple(AppleTransporter)
 
 
 //transportAnApple(FruitTransporter)   // it would be nice if it worked
-
-
-
-
-
-
-trait Transport2[-T] {
-  def send(item: T): String
-}
-// Note the [-T]
-object AppleTransport2 extends Transport2[Apple] {
-  def send(item: Apple) = s"Sending and eating ${item.name}"
-}
-object FruitTransport2 extends Transport2[Fruit] {
-  def send(item: Fruit) = s"Sending a healthy ${item.name}"
-}
-object AnyTransport2 extends Transport2[Any] {
-  def send(item: Any) = s"Sending ${item.toString}"
-}
-
-def transportAnApple(transport: Transport2[Apple]): String = {
-  transport.send(Apple("Fuji"))
-}
-
-transportAnApple(AppleTransport2)
-transportAnApple(FruitTransport2)
-transportAnApple(AnyTransport2)
