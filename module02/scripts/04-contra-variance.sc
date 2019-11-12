@@ -8,7 +8,7 @@ case class Orange(name: String) extends Fruit
 
 
 
-trait Transporter[-T] {
+trait Transporter[T] {
   def send(item: T): String
 }
 
@@ -29,7 +29,7 @@ def transportAnApple(transport: Transporter[Apple]): String = {
 transportAnApple(AppleTransporter)
 
 
-transportAnApple(FruitTransporter)   // it would be nice if it worked
+//transportAnApple(FruitTransporter)   // it would be nice if it worked
 
 
 
