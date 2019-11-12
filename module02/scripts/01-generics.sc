@@ -2,7 +2,7 @@
 abstract class Food { val name: String}
 
 abstract class Fruit extends Food{
-  val peel = s"Peeling a $name fruit"
+  def peel = s"Peeling a $name fruit"
 }
 case class Banana(name: String) extends Fruit
 case class Apple(name: String) extends Fruit
