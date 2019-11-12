@@ -8,28 +8,33 @@ case class Orange(name: String) extends Fruit
 
 
 
-trait Transport[T] {
+trait Transporter[T] {
   def send(item: T): String
 }
 
 
-object AppleTransport extends Transport[Apple] {
+object AppleTransport extends Transporter[Apple] {
   def send(item: Apple) = s"Sending and eating ${item.name}"
 }
-object FruitTransport extends Transport[Fruit] {
+object FruitTransport extends Transporter[Fruit] {
   def send(item: Fruit) = s"Sending a healthy ${item.name}"
 }
-object AnyTransport extends Transport[Any] {
+object AnyTransport extends Transporter[Any] {
   def send(item: Any) = s"Sending ${item.toString}"
 }
 
-def transportAnApple(transport: Transport[Apple]): String = {
+def transportAnApple(transport: Transporter[Apple]): String = {
   transport.send(Apple("Fuji"))
 }
 transportAnApple(AppleTransport)
 
 
-//transportAnApple(FruitTransport)   // it would be nice if it worked
+transportAnApple(FruitTransport)   // it would be nice if it worked
+
+
+
+
+
 
 trait Transport2[-T] {
   def send(item: T): String
