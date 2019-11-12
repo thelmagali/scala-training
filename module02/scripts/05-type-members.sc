@@ -22,11 +22,9 @@ val appleBowl = new AppleBowl(Apple("Fiji"))
 
 val apple1 = appleBowl.food
 
-val apple2: Apple = appleBowl.food
+val apple2: appleBowl.FOOD = appleBowl.food
 
-val apple3: appleBowl.FOOD = appleBowl.food
-
-val apple4: AppleBowl#FOOD = appleBowl.food
+val apple3: AppleBowl#FOOD = appleBowl.food
 
 
 
