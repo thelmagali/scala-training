@@ -25,4 +25,4 @@ libraryDependencies in ThisBuild ++= Seq(
 
 )
 
-lazy val module02 = project
+lazy val training = project
