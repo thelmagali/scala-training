@@ -17,7 +17,7 @@ abstract class CompareT[T] {
   */
 
 // Implicit type classes
-def getMax[T](list: List[T])(implicit cmp: CompareT[T]): T = {
+def genericGetMax[T](list: List[T])(implicit cmp: CompareT[T]): T = {
   require(list.nonEmpty)
   list.reduceLeft{ (i1: T, i2: T) =>
     if(cmp.isLarger(i1, i2)){
@@ -45,8 +45,8 @@ val nums = List(1,4,3,2,6,5)
 val chars = List('b', 'a', '2')
 
 
-getMax(nums)
-getMax(chars)
+genericGetMax(nums)
+genericGetMax(chars)
 
 
 // Now show the syntactic sugar for implicit type classes and what is implicitly
