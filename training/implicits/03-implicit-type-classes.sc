@@ -31,15 +31,15 @@ def genericGetMax[T](list: List[T])(implicit cmp: CompareT[T]): T = {
 
 // let's use it
 
-implicit object CompareInt extends CompareT[Int] {
-  override def isSmaller(i1: Int, i2: Int) = i1 < i2
-  override def isLarger(i1: Int, i2: Int) = i1 > i2
-}
-
-implicit object CompareChar extends CompareT[Char] {
-  override def isSmaller(i1: Char, i2: Char) = i1 < i2
-  override def isLarger(i1: Char, i2: Char) = i1 > i2
-}
+//implicit object CompareInt extends CompareT[Int] {
+//  override def isSmaller(i1: Int, i2: Int) = i1 < i2
+//  override def isLarger(i1: Int, i2: Int) = i1 > i2
+//}
+//
+//implicit object CompareChar extends CompareT[Char] {
+//  override def isSmaller(i1: Char, i2: Char) = i1 < i2
+//  override def isLarger(i1: Char, i2: Char) = i1 > i2
+//}
 
 val nums = List(1,4,3,2,6,5)
 val chars = List('b', 'a', '2')
