@@ -30,7 +30,7 @@ retry(checkTimestamp())(RetryParams(20))
 //Go up and make RetryParams implicit
 
 
-/** Notes on Implicits
+/** Notes on Implicits parameters
   *
   * 1. You can always override implicits with an explicit parameter
   *
@@ -43,4 +43,13 @@ retry(checkTimestamp())(RetryParams(20))
   * 5. If any implicits are explicitly provided, all of them must be provided
   *
   */
+
+/**
+ Implicit resolution
+
+  1. Implicits defined in current scope (current example)
+  2. Explicit imports (global execution context)
+  3. wildcard imports
+  4. Companion objects of a type (json conversion)
+ */
 
