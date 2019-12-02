@@ -20,9 +20,7 @@ trait CompareT[T] {
 def genericGetMax[T](list: List[T])(implicit cmp: CompareT[T]): T = {
   require(list.nonEmpty)
   list.reduceLeft{ (i1: T, i2: T) =>
-    if(cmp.isLarger(i1, i2)){
-      i1
-    } else i2
+    if(cmp.isLarger(i1, i2))i1 else i2
   }
 }
 
